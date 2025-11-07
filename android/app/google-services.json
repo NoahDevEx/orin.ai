@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "503423315901",
+    "project_id": "orin-86d35",
+    "storage_bucket": "orin-86d35.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:503423315901:android:7a80e890c03e4fada2acd4",
+        "android_client_info": {
+          "package_name": "com.example.myapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "503423315901-itb6voapv2htq9u767st2vmsjpq4khls.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD6e7KMeVLHHQrCwiaBVHquH9AN5YXtdE8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "503423315901-itb6voapv2htq9u767st2vmsjpq4khls.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
