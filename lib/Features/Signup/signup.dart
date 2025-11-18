@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:myapp/Data/Color/color.dart';
 import 'package:myapp/Data/Fonts/fonts.dart';
+import 'package:myapp/Features/Login/login.dart';
 import 'package:myapp/Features/Screen/screen.dart';
 import 'package:myapp/Services/service.dart';
 
@@ -18,6 +19,7 @@ class _SignupState extends State<Signup> {
   TextEditingController signup_email = TextEditingController();
   TextEditingController signup_password = TextEditingController();
   TextEditingController confirm_signup_password = TextEditingController();
+  Color swapColor = buttonColor;
   @override
   void initState() {
     super.initState();
@@ -99,8 +101,8 @@ class _SignupState extends State<Signup> {
                                   //onTapOutside: FocusManager.instance.primaryFocus?.unfocus(),
                                   keyboardType: TextInputType.name,
                                   decoration: InputDecoration(
-                                    labelText: "Orúkọ rẹ",
-                                    labelStyle: minorFont.copyWith(
+                                    hintText: "Orúkọ rẹ",
+                                    hintStyle: minorFont.copyWith(
                                       color: white.withOpacity(0.2),
                                     ),
                                     filled: true,
@@ -135,8 +137,8 @@ class _SignupState extends State<Signup> {
                                   keyboardType: TextInputType.emailAddress,
                                   maxLines: 1,
                                   decoration: InputDecoration(
-                                    labelText: "Imeèlì",
-                                    labelStyle: minorFont.copyWith(
+                                    hintText: "Imeèlì",
+                                    hintStyle: minorFont.copyWith(
                                       color: white.withOpacity(0.2),
                                     ),
                                     filled: true,
@@ -170,8 +172,8 @@ class _SignupState extends State<Signup> {
                                   //onTapOutside: FocusManager.instance.primaryFocus?.unfocus(),
                                   keyboardType: TextInputType.name,
                                   decoration: InputDecoration(
-                                    labelText: "Ọrọ̀ aṣínà",
-                                    labelStyle: minorFont.copyWith(
+                                    hintText: "Ọrọ̀ aṣínà",
+                                    hintStyle: minorFont.copyWith(
                                       color: white.withOpacity(0.2),
                                     ),
                                     filled: true,
@@ -205,8 +207,8 @@ class _SignupState extends State<Signup> {
                                   //onTapOutside: FocusManager.instance.primaryFocus?.unfocus(),
                                   keyboardType: TextInputType.name,
                                   decoration: InputDecoration(
-                                    labelText: "Jẹ́risi Ọrọ̀ aṣínà",
-                                    labelStyle: minorFont.copyWith(
+                                    hintText: "Jẹ́risi Ọrọ̀ aṣínà",
+                                    hintStyle: minorFont.copyWith(
                                       color: white.withOpacity(0.2),
                                     ),
                                     filled: true,
@@ -255,7 +257,7 @@ class _SignupState extends State<Signup> {
                                 },
                                 child: Container(
                                   decoration: BoxDecoration(
-                                    color: black,
+                                    color: swapColor,
                                     borderRadius: BorderRadius.circular(20.0),
                                   ),
                                   width: screenWidth(context) * 0.65,
@@ -274,10 +276,13 @@ class _SignupState extends State<Signup> {
                               SizedBox(height: 5.h),
                               GestureDetector(
                                 onTap: () {
-                                  Navigator.pushReplacementNamed(
-                                    context,
-                                    'Login',
-                                  );
+                                  Navigator.push(context,
+                                      MaterialPageRoute(
+                                        builder: (context) => Login(),
+                                      ));
+                              setState(() {
+                              swapColor = black;
+                              });
                                 },
                                 child: Text(
                                   "< Padà si Itẹwọ́lé",

@@ -10,3 +10,8 @@ begin: Alignment.topCenter,
 end: Alignment.bottomCenter
 
 );
+
+
+Color activeColour = Color(0xFF2C2C2C);
+Color inactiveColour = Color(0xFF757575);
+Color navBarColour = Color(0xFF2C2C2C);

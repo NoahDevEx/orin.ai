@@ -19,7 +19,7 @@ class AuthServices {
         password: password,
       );
 
-      if (user != null && user.emailVerified == false) {
+      if (user.emailVerified == false) {
         await user.sendEmailVerification();
       }
 
@@ -60,20 +60,18 @@ class AuthServices {
         email: email,
         password: password,
       );
-      if (user != null) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text(
-              "Ìwọlé sáseyọrí!",
-              style: minorFont.copyWith(color: white, fontSize: 18.0),
-            ),
-            backgroundColor: Colors.green,
-            duration: Duration(milliseconds: 1000),
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(
+            "Ìwọlé sáseyọrí!",
+            style: minorFont.copyWith(color: white, fontSize: 18.0),
           ),
-        );
-        Navigator.pushReplacementNamed(context, 'HomePage');
-      }
-    } on FirebaseException catch (e) {
+          backgroundColor: Colors.green,
+          duration: Duration(milliseconds: 1000),
+        ),
+      );
+      Navigator.pushReplacementNamed(context, 'HomePage');
+        } on FirebaseException catch (e) {
       print(e.message);
       String errorMessage = '';
 

@@ -21,6 +21,9 @@ dependencies:
   firebase_auth: ^6.1.1
   firebase_core: ^4.2.0
   animated_onboard_screen: ^1.0.1
+  image_picker: ^1.2.1
+  flutter_card_swiper: ^7.2.0
+  curved_navigation_bar: ^1.0.6
  
 
  
@@ -48,7 +51,15 @@ flutter:
     - lib/Data/Assets/Images/gbemisola.jpg
     - lib/Data/Assets/Images/logo.png
     - lib/Data/Assets/Images/wole.jpg 
-    - lib/Data/Assets/Images/favour.jpg 
+    - lib/Data/Assets/Images/favour.jpg
+    - lib/Data/Assets/Images/song1.png
+    - lib/Data/Assets/Images/song2.png
+    - lib/Data/Assets/Images/song3.png
+    - lib/Data/Assets/Images/song4.png
+    - lib/Data/Assets/Images/song5.png
+    - lib/Data/Assets/Images/song6.png
+    - lib/Data/Assets/Images/song7.png
+
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

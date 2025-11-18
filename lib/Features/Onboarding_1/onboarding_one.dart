@@ -72,7 +72,16 @@ class _Onboarding_OneState extends State<Onboarding_One> {
                 Navigator.pushReplacementNamed(context, 'Onboarding_Two');
               },
               child: Container(
-                decoration: BoxDecoration(color: buttonColor),
+                decoration: BoxDecoration(color: buttonColor,
+                borderRadius: BorderRadius.circular(20.0),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.5),
+                    spreadRadius:1,
+                    offset: Offset(0, 2),
+                  ),
+                ],
+                ),
                 height: screenHeight(context) * 0.07,
                 width: screenWidth(context) * 0.8,
                 child: Center(

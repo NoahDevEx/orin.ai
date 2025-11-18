@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:myapp/Data/Color/color.dart';
 import 'package:myapp/Data/Fonts/fonts.dart';
 import 'package:myapp/Features/Screen/screen.dart';
+import 'package:myapp/Features/Signup/signup.dart';
 import 'package:myapp/Services/service.dart';
 
 class Login extends StatefulWidget {
@@ -16,6 +17,7 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
   TextEditingController name = TextEditingController();
   TextEditingController password = TextEditingController();
+  Color swapColor = buttonColor;
 
   @override
   Widget build(BuildContext context) {
@@ -54,146 +56,151 @@ class _LoginState extends State<Login> {
                     filter: ImageFilter.blur(sigmaX: 0.5, sigmaY: 0.5),
                     child: Padding(
                       padding: const EdgeInsets.only(bottom: 50.0),
-                      child: Container(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Image.asset(
-                              "lib/Data/Assets/Images/logo.png",
-                              height: 130.0,
-                              width: 130.0,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Image.asset(
+                            "lib/Data/Assets/Images/logo.png",
+                            height: 130.0,
+                            width: 130.0,
+                          ),
+                          SizedBox(height: 0.h),
+                          Text(
+                            "Tẹwọ́lé",
+                            style: majorFont.copyWith(
+                              color: white,
+                              fontSize: 30.0,
                             ),
-                            SizedBox(height: 0.h),
-                            Text(
-                              "Tẹwọ́lé",
-                              style: majorFont.copyWith(
-                                color: white,
-                                fontSize: 30.0,
+                          ),
+                          Text(
+                            "Tẹ orúkọ ìní àti ọ̀rọ̀ aṣínà rẹ láti tẹwọ́lé.",
+                            style: minorFont.copyWith(
+                              color: white.withOpacity(0.3),
+                              fontSize: 13.0,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          SizedBox(height: 40.h),
+                          SizedBox(
+                            width: screenWidth(context) * 0.65,
+                            height: screenHeight(context) * 0.062,
+                            child: TextField(
+                              controller: name,
+                              cursorColor: buttonColor,
+                              cursorHeight: 20.0,
+                              style: minorFont.copyWith(color: white),
+                              //onTapOutside: FocusManager.instance.primaryFocus?.unfocus(),
+                              keyboardType: TextInputType.name,
+                              decoration: InputDecoration(
+                                hintText: "Ìmeèlì re",
+                                hintStyle: minorFont.copyWith(
+                                  color: white.withOpacity(0.2),
+                                ),
+                                filled: true,
+                                fillColor: white.withOpacity(0.1),
+                                focusedBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.all(
+                                    Radius.circular(20.0),
+                                  ),
+                                  borderSide: BorderSide.none,
+                                ),
+
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.all(
+                                    Radius.circular(20.0),
+                                  ),
+                                  borderSide: BorderSide.none,
+                                ),
                               ),
                             ),
-                            Text(
-                              "Tẹ orúkọ ìní àti ọ̀rọ̀ aṣínà rẹ láti tẹwọ́lé.",
+                          ),
+
+                          SizedBox(height: 30.h),
+                          SizedBox(
+                            width: screenWidth(context) * 0.65,
+                            height: screenHeight(context) * 0.062,
+                            child: TextField(
+                              controller: password,
+                              cursorColor: buttonColor,
+                              cursorHeight: 20.0,
+                              style: minorFont.copyWith(color: white),
+                              //onTapOutside: FocusManager.instance.primaryFocus?.unfocus(),
+                              keyboardType: TextInputType.name,
+                              obscureText: true,
+                              obscuringCharacter: "*",
+                              decoration: InputDecoration(
+                                hintText: "Ọ̀rọ̀ asínà",
+                                hintStyle: minorFont.copyWith(
+                                  color: white.withOpacity(0.2),
+                                ),
+                                filled: true,
+                                fillColor: white.withOpacity(0.1),
+                                focusedBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.all(
+                                    Radius.circular(20.0),
+                                  ),
+                                  borderSide: BorderSide.none,
+                                ),
+
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.all(
+                                    Radius.circular(20.0),
+                                  ),
+                                  borderSide: BorderSide.none,
+                                ),
+                              ),
+                            ),
+                          ),
+
+                          SizedBox(height: 30.h),
+                          GestureDetector(
+                            onTap: () async {
+                              await AuthServices().loginUser(
+                                context,
+                                email: name.text.trim(),
+                                password: password.text.trim(),
+                              );
+                              setState(() {
+                                swapColor = black;
+                              });
+                            },
+                            child: Container(
+                              decoration: BoxDecoration(
+                                color: swapColor,
+                                borderRadius: BorderRadius.circular(20.0),
+                              ),
+                              width: screenWidth(context) * 0.65,
+                              height: screenHeight(context) * 0.062,
+                              child: Center(
+                                child: Text(
+                                  "Tẹwọ́lé",
+                                  style: majorFont.copyWith(
+                                    fontSize: 20.0,
+                                    color: white,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                          SizedBox(height: 15.h),
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => Signup(),
+                                ),
+                              );
+                            },
+                            child: Text(
+                              "Sàkọsílẹ̀ tuntun",
                               style: minorFont.copyWith(
-                                color: white.withOpacity(0.3),
-                                fontSize: 13.0,
-                                fontWeight: FontWeight.bold,
+                                fontSize: 12.0,
+                                color: white.withOpacity(0.5),
                               ),
                             ),
-                            SizedBox(height: 40.h),
-                            SizedBox(
-                              width: screenWidth(context) * 0.65,
-                              height: screenHeight(context) * 0.062,
-                              child: TextField(
-                                controller: name,
-                                cursorColor: buttonColor,
-                                cursorHeight: 20.0,
-                                style: minorFont.copyWith(color: white),
-                                //onTapOutside: FocusManager.instance.primaryFocus?.unfocus(),
-                                keyboardType: TextInputType.name,
-                                decoration: InputDecoration(
-                                  labelText: "Ìmeèlì re",
-                                  labelStyle: minorFont.copyWith(
-                                    color: white.withOpacity(0.2),
-                                  ),
-                                  filled: true,
-                                  fillColor: white.withOpacity(0.1),
-                                  focusedBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.all(
-                                      Radius.circular(20.0),
-                                    ),
-                                    borderSide: BorderSide.none,
-                                  ),
-
-                                  border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.all(
-                                      Radius.circular(20.0),
-                                    ),
-                                    borderSide: BorderSide.none,
-                                  ),
-                                ),
-                              ),
-                            ),
-
-                            SizedBox(height: 30.h),
-                            SizedBox(
-                              width: screenWidth(context) * 0.65,
-                              height: screenHeight(context) * 0.062,
-                              child: TextField(
-                                controller: password,
-                                cursorColor: buttonColor,
-                                cursorHeight: 20.0,
-                                style: minorFont.copyWith(color: white),
-                                //onTapOutside: FocusManager.instance.primaryFocus?.unfocus(),
-                                keyboardType: TextInputType.name,
-                                decoration: InputDecoration(
-                                  labelText: "Ọ̀rọ̀ asínà",
-                                  labelStyle: minorFont.copyWith(
-                                    color: white.withOpacity(0.2),
-                                  ),
-                                  filled: true,
-                                  fillColor: white.withOpacity(0.1),
-                                  focusedBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.all(
-                                      Radius.circular(20.0),
-                                    ),
-                                    borderSide: BorderSide.none,
-                                  ),
-
-                                  border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.all(
-                                      Radius.circular(20.0),
-                                    ),
-                                    borderSide: BorderSide.none,
-                                  ),
-                                ),
-                              ),
-                            ),
-
-                            SizedBox(height: 30.h),
-                            GestureDetector(
-                              onTap: () async {
-                                await AuthServices().loginUser(
-                                  context,
-                                  email: name.text.trim(),
-                                  password: password.text.trim(),
-                                );
-                              },
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  color: black,
-                                  borderRadius: BorderRadius.circular(20.0),
-                                ),
-                                width: screenWidth(context) * 0.65,
-                                height: screenHeight(context) * 0.062,
-                                child: Center(
-                                  child: Text(
-                                    "Tẹwọ́lé",
-                                    style: majorFont.copyWith(
-                                      fontSize: 20.0,
-                                      color: white,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                            SizedBox(height: 15.h),
-                            GestureDetector(
-                              onTap: () {
-                                Navigator.pushReplacementNamed(
-                                  context,
-                                  'Signup',
-                                );
-                              },
-                              child: Text(
-                                "Sàkọsílẹ̀ tuntun",
-                                style: minorFont.copyWith(
-                                  fontSize: 12.0,
-                                  color: white.withOpacity(0.5),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
                     ),
                   ),
